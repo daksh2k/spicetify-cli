@@ -51,7 +51,7 @@ func InitConfig(isQuiet bool) {
 	patchSection = cfg.GetSection("Patch")
 }
 
-// InitPaths checks various essential paths' availablities,
+// InitPaths checks various essential paths' availabilities,
 // tries to auto-detect them and stops spicetify when any one
 // of them is invalid.
 func InitPaths() {
@@ -268,7 +268,7 @@ func getThemeFolder(themeName string) string {
 // and returns boolean value based on user input (y/Y or n/N) or
 // return `defaultAnswer` if input is omitted.
 // If input is neither of them, print form again.
-// If app is in quiet mode, returns quietModeAnswer without promting.
+// If app is in quiet mode, returns quietModeAnswer without prompting.
 func ReadAnswer(info string, defaultAnswer bool, quietModeAnswer bool) bool {
 	if quiet {
 		return quietModeAnswer
@@ -289,13 +289,13 @@ func ReadAnswer(info string, defaultAnswer bool, quietModeAnswer bool) bool {
 	return ReadAnswer(info, defaultAnswer, quietModeAnswer)
 }
 
-// CheckUpgrade fetchs latest package version from Github API and inform user if there is new release
+// CheckUpgrade fetches latest package version from Github API and inform user if there is new release
 func CheckUpgrade(version string) {
 	if !settingSection.Key("check_spicetify_upgrade").MustBool() {
 		return
 	}
 
-	latestTag, err := FetchLatestTag()
+	latestTag, err := utils.FetchLatestTag()
 
 	if err != nil {
 		utils.PrintError("Cannot fetch latest release info")
